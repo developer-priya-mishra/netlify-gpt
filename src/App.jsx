@@ -1,10 +1,11 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import Body from './components/Body.jsx'
 
 const App = () => {
   return (
     <>
-      <h1 className='text-3xl font-bold text-green-800'>Namste everyone! Let's build Netflix GPT</h1>
+      <Body/>
     </>
   )
 }
