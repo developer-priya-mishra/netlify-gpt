@@ -6,10 +6,14 @@ import { createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfil
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import Person_logo from "../../public/Person_logo.png"
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
     const [isSignInForm,setSignInForm] = useState(true);
     const [errorMsg,setErrorMsg] = useState("");
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
@@ -34,6 +38,15 @@ const Login = () => {
                     updateProfile(user, {
                         displayName: name, photoURL: Person_logo
                       }).then(() => {
+                        const {uid,email,displayName, photoURL} = auth.currentUser;
+                        dispatch(
+                            addUser({
+                                uid:uid,
+                                email:email,
+                                displayName:displayName,
+                                photoURL:photoURL
+                            })
+                        )
                         navigate('/browse');
                       }).catch((error) => {
                         setErrorMsg(error.message)
