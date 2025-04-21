@@ -1,10 +1,11 @@
 import NetFlixLogo from "../../public/NetFlix_Logo.png"
 import LogOutLogo from "../../public/logout_logo.png"
-import {signOut } from "firebase/auth";
+import {onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Header=()=>{
     const dispatch = useDispatch();
@@ -19,6 +20,22 @@ const Header=()=>{
             navigate('/error');
           });
     }
+
+    useEffect(()=>{
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const {uid,email,displayName,photoURL} = user;
+            dispatch(addUser({uid:uid, email:email , displayName:displayName,photoURL:photoURL}))
+            navigate("/browse")
+          } else {
+            dispatch(removeUser());
+            navigate("/")
+          }
+        });
+      
+      // unsubscibing when components unmount
+      return () => unsubscribe()
+  },[])
 
     return(
         <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between">
