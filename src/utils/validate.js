@@ -1,4 +1,4 @@
-export const checkValidData = (name,email,password) =>{
+export const checkValidData = (isSignInForm,name,email,password) =>{
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedPassword = password.trim();
@@ -7,7 +7,7 @@ export const checkValidData = (name,email,password) =>{
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
     const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(trimmedPassword);
 
-    if(!isNameValid) return "Name is invalid"
+    if(!isSignInForm && !isNameValid) return "Name is invalid"
     if(!isEmailValid) return "Email is invalid"
     if(!isPasswordValid) return "Password is invalid"
 
