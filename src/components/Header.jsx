@@ -1,4 +1,4 @@
-import NetFlixLogo from "../../public/NetFlix_Logo.png";
+import NetFlixLogo from "../../public/Netlify_Logo.svg";
 import LogOutLogo from "../../public/logout_logo.png";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between">
-      <img src={NetFlixLogo} alt="logo" className="w-50" />
+      <img src={NetFlixLogo} alt="logo" className="w-20 mx-6" />
       {user && (
         <div className="flex p-2">
           <img src={user.photoURL} alt="logo" className="w-10 h-10 m-2" />
