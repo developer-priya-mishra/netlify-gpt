@@ -60,7 +60,7 @@
         - Title & Description
         - MovieSuggestions
             - MovieLists * N 
-- NetflixGPT
+- Netlify-GPT
     - Search Bar
     - Movie Suggestions
 
