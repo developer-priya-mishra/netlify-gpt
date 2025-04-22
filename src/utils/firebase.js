@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "netlify-gpt-f20c3",
   storageBucket: "netlify-gpt-f20c3.firebasestorage.app",
   messagingSenderId: "998075629777",
-  appId: "1:998075629777:web:13ce8bbb8dfab5d8c045f0"
+  appId: "1:998075629777:web:13ce8bbb8dfab5d8c045f0",
 };
 
 // Initialize Firebase
