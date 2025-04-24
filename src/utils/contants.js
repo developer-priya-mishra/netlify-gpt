@@ -7,5 +7,10 @@ export const API_Options = {
   },
 };
 
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
-export const IMG_CDN_URL= "https://image.tmdb.org/t/p/w500"
+export const Supported_Languages = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];

@@ -1,3 +1,4 @@
+import lang from "../utils/languageConstant";
 
 const GptSearchBar = () => {
   return (
@@ -9,7 +10,7 @@ const GptSearchBar = () => {
           className="p-4 m-2 col-span-9 bg-white rounded-lg"
         />
         <button className="col-span-3 m-2 py-2 px-4 bg-red-700 text-white rounded-lg">
-          Search
+          {lang.hindi.search}
         </button>
       </form>
     </div>

@@ -6,6 +6,8 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { Supported_Languages } from "../utils/contants";
+import lang from "../utils/languageConstant";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -46,16 +48,24 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleGptSearchClick = () =>{
-    dispatch(toggleGptSearchView())
-  }
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
 
   return (
     <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between">
       <img src={NetlifyLogo} alt="logo" className="w-20 mx-6" />
       {user && (
         <div className="flex p-2">
-          <button className="py-2 px-4 text-white bg-purple-800 rounded-lg mx-4 my-4 cursor-pointer hover:bg-purple-600" onClick={handleGptSearchClick}>
+          <select className="bg-gray-500 p-2 my-4 rounded-lg cursor-pointer">
+            {Supported_Languages.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+            ))}
+          </select>
+          <button
+            className="py-2 px-4 text-white bg-purple-800 rounded-lg mx-4 my-4 cursor-pointer hover:bg-purple-600"
+            onClick={handleGptSearchClick}
+          >
             GPT Search
           </button>
           <img src={user.photoURL} alt="logo" className="w-10 h-10 m-2" />
